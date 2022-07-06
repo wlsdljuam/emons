@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>에몬스몰</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <style>
+    *{margin:0;padding:0;}
+    html{}
+    body{font-size:12px;}
+    #res_view{
+        position:fixed;
+        top:50%;
+        right:17px;
+        z-index:9990;
+        transform:translateY(-50%);
+        background:rgba(0,0,0,0.7);
+    }
+    #res_view>div{
+        margin:0 auto;
+    }
+    #res_view>div:after{
+        content:'';
+        display:block;
+        clear:both;
+    }
+    #res_view>div>button{
+        display:block;
+        padding:0px;
+        border:none;
+        background:transparent;
+        cursor:pointer;
+        width:100px;
+        line-height:40px;
+        text-align:center;
+        box-sizing:border-box;
+        color:#fff;
+        font-size:1.1em;
+        text-decoration:none;
+        border:1px solid #ddd;;
+        transition:0.5s;
+    }
+    #res_view>div>button:nth-child(2){
+        border-top:none;
+        border-bottom:none;
+    }
+    #res_view>div>button:hover, #res_view>div>button.active{
+        background:#fefefe;
+        color:#444;
+    }
+    #view_device{
+        margin-top:40px;
+        margin-left: auto;
+        margin-right: auto;
+    }   
+    #view_device.pc #view_inner{
+        border:none;
+    }
+    #view_device.pc iframe{
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+    }
+    #view_device.tablet{
+        margin-top:100px;
+        margin-bottom:100px;
+        width:847px;
+        height:1086px;
+        box-sizing:border-box;
+        padding:30px;
+        border-radius:15px;
+        border:1px solid #ccc;
+        box-shadow:0px 1px 1px rgba(100,100,100,0.1), 0px -1px 1px rgba(100,100,100,0.1);
+    }
+    #view_device.mobile{
+        margin-top:100px;
+        margin-bottom:100px;
+        width:399px;
+        height:722px;
+        box-sizing:border-box;
+        padding:40px 10px;
+        border-radius:8px;
+        border:1px solid #ccc;
+        box-shadow:0px 1px 1px rgba(100,100,100,0.1), 0px -1px 1px rgba(100,100,100,0.1);
+    }
+    #view_inner{
+        width:100%;
+        height:100%;
+        border:1px solid #eee;
+    }
+    .view_frame{
+        width:100%;
+        height:100%;
+        border:none;
+    }
+    </style>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+    <script>
+    $(function(){
+        $("#res_view button").click(function(){
+            var device=$(this).attr("data-url");
+            $("#view_device").removeClass();
+            $("#view_device").addClass(device);
+            $(this).siblings().removeClass("active");
+            $(this).addClass("active");
+        });
+    });//E
+    </script>
+</head>
+<body>
+<nav id="res_view">
+    <div>
+        <button data-url="pc" class="active">PC</button>
+        <button data-url="tablet">TABLET</button>
+        <button data-url="mobile">MOBILE</button>
+    </div>
+</nav>
+<div id="view_device" class="pc">
+    <div id="view_inner">
+        <iframe class="view_frame" src="index.html" title="port"></iframe>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
